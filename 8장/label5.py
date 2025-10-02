@@ -1,7 +1,7 @@
 from tkinter import*
 
 root = Tk()
-photo = PhotoImage(file="\Python 2025\Twitter.png")
+photo = PhotoImage(file="\Python 2025\8장\Twitter.png")
 w = Label(root, image=photo, justify="left").pack(side="right")
 message="""T의 공감법은 사이코패스 같은 게 아니다.
 문제가 생겼다면 해결할 수 있도록 돕는 것이
