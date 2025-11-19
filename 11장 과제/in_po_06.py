@@ -45,6 +45,7 @@ frame.pack()
 Button(frame, text="강아지", command=lambda : make_sound(Dog()), padx=10).pack(side='left') #클래스 객체 생성하여 람다함수로 인자 전달
 Button(frame, text="고양이", command=lambda : make_sound(Cat()), padx=10).pack(side='left')
 Button(frame, text="오리", command=lambda : make_sound(Duck()), padx=10).pack(side='left')
+ #람다함수가 아닌 일반 함수를 넣었을때, 미리 인자를 전달하고 함수를 호출하는 바람에 선언되지 못한 result 변수의 충돌이 일어났다.
 '''
 Button(frame, text="강아지", command=lambda ch="dog": make_sound(ch), padx=10).pack(side='left')
 Button(frame, text="고양이", command=lambda ch="cat": make_sound(ch), padx=10).pack(side='left')
