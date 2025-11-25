@@ -4,7 +4,7 @@ destination_file = input("복사 파일 이름을 입력하시오: ")
 with open(source_file, 'rb') as source:
     with open(destination_file, 'wb') as destination:
         while True:
-            chunk = source.read(16)  # 보기 좋게 16바이트씩 읽기
+            chunk = source.read(16)  # 보기 좋게 16바이트씩 읽기/1024씩 읽으면 1kb씩 읽는 셈
             if not chunk:
                 break
 

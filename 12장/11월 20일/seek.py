@@ -1,13 +1,13 @@
 import os
 
 base_dir = os.path.dirname(__file__)
-#print(base_dir)
+print(base_dir)
 
 file_path = os.path.join(base_dir, "proverbs.txt")
-#print(file_path)
+print(file_path)
 
 with open(file_path, 'rb') as file:
-    #파일 포인터를 파일의 10번째 바이트로 이동
+    #파일 포인터를 파일의 10번째 바이트로 이동(공백/문자열 1바이트씩 계산)
     file.seek(10, 0)
 
     #파일 포인터의 현재 위치 확인
