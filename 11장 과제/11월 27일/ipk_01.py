@@ -1,4 +1,5 @@
 #https://github.com/beagglechung/2025_Python/blob/main/inheri%2Bpoly%2Btkinter/ipk_04.py
+
 from tkinter import *
 
 class Vehicle:
