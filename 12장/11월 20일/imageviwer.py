@@ -9,7 +9,7 @@ def open_image():
         image = Image.open(file_path)
         photo = ImageTk.PhotoImage(image)
         label.config(image=photo)
-        label.image = photo
+        label.image = photo #함수 종료 후에도 이미지를 표시함
 
 
 #메인 애플리케이션 창 생성
