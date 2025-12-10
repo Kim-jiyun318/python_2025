@@ -1,53 +1,50 @@
-#연습해보기
+from tkinter import filedialog
 from tkinter import *
-from tkinter import filedialog, messagebox
+import os
+base_dir = os.path.dirname(__file__)
 
-# 1. 스페이스 / 대문자 / 소문자 개수 세기
+
 def count_stats(filename):
-    space_cnt = 0
-    upper_cnt = 0
-    lower_cnt = 0
-
-    with open(filename, "r", encoding="utf-8") as f:
-        for line in f:
+    space_count = 0
+    up_count = 0
+    low_count = 0
+    with open(filename, "r", encoding="utf-8") as file:
+        
+        for line in file:
             for ch in line:
                 if ch == ' ':
-                    space_cnt += 1
+                    space_count+=1
                 elif ch.isupper():
-                    upper_cnt += 1
+                    up_count+=1
                 elif ch.islower():
-                    lower_cnt += 1
-    return space_cnt, upper_cnt, lower_cnt
+                    low_count+=1
+        return space_count, up_count, low_count
 
-# 2. 파일 선택 버튼 이벤트
+
 def select_file():
-    filepath = filedialog.askopenfilename(
-        title="파일을 선택하세요",
-        filetypes=[("텍스트 파일", "*.txt"), ("모든 파일", "*.*")]
-    )
-    if not filepath:   # 사용자가 취소하면 종료
-        return
+    path = filedialog.askopenfilename(title = "파일을 선택해 주세요.", filetypes=[("텍스트 파일", "*.txt"), ("모든 파일", "*.*")])
+    if not path: #경로가 없으면
+        return #바로 종료
     try:
-        space_cnt, upper_cnt, lower_cnt = count_stats(filepath)
-
-        file_label.config(text=f"선택된 파일: {filepath}")
-        result_label.config(text=f"스페이스: {space_cnt}, 대문자: {upper_cnt}, 소문자: {lower_cnt}")
-    except Exception as e:
-        messagebox.showerror("에러", f"파일을 처리하는 중 오류가 발생했습니다.\n{e}")
-
-# 3. Tkinter GUI
+        counts = count_stats(path)
+        select_label.config(text = f"선택된 파일:{path}")
+        result_label.config(text = f"스페이스:{counts[0]}, 대문자:{counts[1]}, 소문자:{counts[2]}")
+    except IOError:
+        print('파일 처리 과정에서 문제가 생겼습니다.') #에러를 메시지박스로 전달하면 좋겠지?
+                                                    #요구사항도 에러메시지를 '팝업창'에 표시하라는 것이었다.
+#tkiner
 root = Tk()
-root.title("문제5")
+root.title("문제 5")
 root.geometry("520x220")
 
-Label(root, text="텍스트 파일을 선택하여 스페이스, 대문자, 소문자 개수를 세어보세요.").pack(pady=10)
+Label(root, text = "텍스트 파일을 선택하여 스페이스, 대문자, 소문자 개수를 세어보세요.").pack(pady=10)
 
-Button(root, text="파일 선택", command=select_file).pack(pady=5)
+Button(root, text = "파일 선택", command = select_file).pack(pady=6)
 
-file_label = Label(root, text="선택된 파일: (없음)")
-file_label.pack(pady=5)
+select_label = Label(root, text = "선택된 파일: (없음)")
+select_label.pack(pady=11)
 
-result_label = Label(root, text="스페이스: 0, 대문자: 0, 소문자: 0")
-result_label.pack(pady=10)
+result_label = Label(root, text = "스페이스: 0, 대문자: 0, 소문자: 0")
+result_label.pack()
 
 root.mainloop()
