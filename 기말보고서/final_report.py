@@ -2,7 +2,6 @@ import pygame
 import random
 import sys
 
-# --- 게임 초기 설정 ---
 WIDTH = 500
 HEIGHT = 800
 WINNING_SCORE = 5
