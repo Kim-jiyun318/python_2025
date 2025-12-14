@@ -11,7 +11,6 @@ WINNING_SCORE = 5
 tk = Tk()
 tk.title("2인용 에어하키 게임")
 tk.resizable(0, 0)
-tk.wm_attributes("-topmost", 1) 
 
 canvas = Canvas(tk, width=WIDTH, height=HEIGHT, bd=0, highlightthickness=0, bg='skyblue')
 canvas.pack()
