@@ -253,7 +253,6 @@ while running:
             running = False
 
         else:
-            # 라운드 리셋 로직
             paddle1 = Paddle(screen, BLUE, p1_y_max - paddle_height, paddle_width, paddle_height, p1_controls, 1, p1_y_min, p1_y_max) 
             paddle2 = Paddle(screen, RED, p2_y_min, paddle_width, paddle_height, p2_controls, 2, p2_y_min, p2_y_max) 
             puck = Puck(screen, paddle1, paddle2, WHITE)
